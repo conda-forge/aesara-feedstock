@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - aesara-cache = bin.aesara_cache:main
   script: {{ PYTHON }} -m pip install . -vv
