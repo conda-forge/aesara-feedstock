@@ -1,4 +1,4 @@
-{% set version = "2.0.3" %}
+{% set version = "2.0.4" %}
 
 package:
   name: aesara
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: 59894eea476ba9514d442201d6508c066a21c6ef0f18bebb92f5ef0f83735ab4
+  sha256: 0a2b52dca5104e8cbb7709e16d22c4c90a31875c0999c24c01855a5b384550b4
   patches:
 
 build:
