@@ -28,7 +28,6 @@ requirements:
     - numpy >=1.9.1
     - scipy >=0.14
     - pygpu >=0.7.0,<0.8
-    - jax  # [py>=37 and not win]
     - filelock
 
 test:
