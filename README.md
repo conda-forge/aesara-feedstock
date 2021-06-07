@@ -1,15 +1,15 @@
 About aesara
 ============
 
-Home: https://github.com/pymc-devs/aesara
+Home: https://github.com/aesara-devs/aesara
 
 Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/aesara-feedstock/blob/master/LICENSE.txt)
 
-Summary: An optimizing compiler for evaluating mathematical expressions. Aesara is a fork of the Theano library maintained by the PyMC developers.
+Summary: An optimizing compiler for evaluating mathematical expressions.
 
-Development: https://github.com/pymc-devs/aesara/
+Development: https://github.com/aesara-devs/aesara/
 
 Documentation: https://aesara.readthedocs.io/en/latest/
 
@@ -18,7 +18,7 @@ Current build status
 
 
 <table>
-    
+
   <tr>
     <td>Azure</td>
     <td>
@@ -259,4 +259,3 @@ Feedstock Maintainers
 * [@brandonwillard](https://github.com/brandonwillard/)
 * [@ericmjl](https://github.com/ericmjl/)
 * [@twiecki](https://github.com/twiecki/)
-
