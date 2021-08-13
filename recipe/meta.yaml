@@ -22,6 +22,8 @@ requirements:
   host:
     - pip
     - python
+    - libblas
+    - liblapack
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
