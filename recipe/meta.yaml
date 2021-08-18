@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - aesara-cache = bin.aesara_cache:main
   script: {{ PYTHON }} -m pip install . -vv
@@ -27,6 +27,7 @@ requirements:
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - m2w64-toolchain [win]
     - python
     - setuptools
     - six >=1.9.0
