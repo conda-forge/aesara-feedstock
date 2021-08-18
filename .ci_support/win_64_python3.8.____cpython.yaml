@@ -2,6 +2,8 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+libblas:
+- 3.8 *netlib
 liblapack:
 - 3.8 *netlib
 m2w64_c_compiler:
