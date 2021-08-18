@@ -34,8 +34,11 @@ requirements:
     - six >=1.9.0
     - numpy >=1.9.1
     - scipy >=0.14
-    - pygpu >=0.7.0,<0.8
+    - {{ pin_compatible('pygpu', '0.7', max_pin='0.8') }}   # [not osx]
     - filelock
+    - jax  # [py>=37 and not win]
+    - libpython >=2.0  [win]
+    - mkl-service [unix and win]
 
 test:
   imports:
