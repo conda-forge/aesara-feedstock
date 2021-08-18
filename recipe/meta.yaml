@@ -22,7 +22,7 @@ requirements:
   host:
     - pip
     - python
-    - libblas =*=* mkl  # [not osx]
+    - libblas * *mkl  # [not osx]
     - libblas  # [osx]
     - liblapack
   run:
