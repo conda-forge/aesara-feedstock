@@ -35,7 +35,6 @@ requirements:
     - numpy >=1.9.1
     - scipy >=0.14
     - filelock
-    - jax  # [py>=37 and not win]
     - libpython >=2.0  # [win]
 
 test:
