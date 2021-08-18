@@ -22,8 +22,7 @@ requirements:
   host:
     - pip
     - python
-    - libblas * *mkl  # [not osx]
-    - libblas  # [osx]
+    - libblas
     - liblapack
   run:
     - {{ compiler('c') }}  # [unix]
@@ -39,7 +38,6 @@ requirements:
     - filelock
     - jax  # [py>=37 and not win]
     - libpython >=2.0  # [win]
-    - mkl-service  # [not osx]
 
 test:
   imports:
