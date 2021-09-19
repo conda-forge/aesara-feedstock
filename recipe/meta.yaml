@@ -1,4 +1,4 @@
-{% set version = "2.2.1" %}
+{% set version = "2.2.2" %}
 
 package:
   name: aesara
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: ea0a85e9f76a82cb967b043ef60ac5b40d20657fd8f7f817167ebab8a6c372f0
+  sha256: 6dcccc61f7c716cddb0db3baa47d48ff6bf53bf50d668b9fcd624e0e8afae0d8
   patches:
 
 build:
@@ -36,6 +36,7 @@ requirements:
     - scipy >=0.14
     - filelock
     - libpython >=2.0  # [win]
+    - dataclasses  # [py36]
 
 test:
   imports:
