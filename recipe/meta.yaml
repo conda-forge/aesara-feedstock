@@ -36,6 +36,7 @@ requirements:
     - scipy >=0.14
     - filelock
     - libpython >=2.0  # [win]
+    - dataclasses  # [py36]
 
 test:
   imports:
