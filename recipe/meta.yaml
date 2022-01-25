@@ -40,6 +40,7 @@ requirements:
     - logical-unification
     - miniKanren
     - cons
+    - etuples
 
 test:
   imports:
