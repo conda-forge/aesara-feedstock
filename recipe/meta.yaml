@@ -42,6 +42,7 @@ requirements:
     - miniKanren
     - cons
     - etuples
+    - typing_extensions
 
 test:
   imports:
