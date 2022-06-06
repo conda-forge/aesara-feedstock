@@ -14,8 +14,6 @@ build:
   entry_points:
     - aesara-cache = bin.aesara_cache:main
   script: {{ PYTHON }} -m pip install . -vv
-  # TODO: DELETE THIS AND RERENDER!!!
-  skip: true  # [not win]
 
 requirements:
   build:
@@ -32,9 +30,6 @@ requirements:
     - {{ compiler('cxx') }}  # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
     - {{ compiler('m2w64_cxx') }}  # [win]
-    - mkl-service  # [win]
-    - libpython  # [win]
-    - m2w64-toolchain  # [win]
     - python
     - setuptools
     - six >=1.9.0
