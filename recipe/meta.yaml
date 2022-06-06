@@ -34,7 +34,7 @@ requirements:
     - setuptools
     - six >=1.9.0
     - numpy >=1.9.1
-    - scipy >=0.14,<1.8.0
+    - scipy >=0.14
     - filelock
     - libpython >=2.0  # [win]
     - dataclasses  # [py==36]
