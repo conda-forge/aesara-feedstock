@@ -6,7 +6,8 @@ from pathlib import Path
 RE_WARNING = re.compile("WARN|Could not locate", re.IGNORECASE)
 
 ALLOWED_WARNINGS = [
-    re.compile("Aesara is too cool for school"),
+    re.compile("Using NumPy C-API based implementation for BLAS"),
+    re.compile("g\+\+ not detected"),
 ]
 
 result = subprocess.check_output(
