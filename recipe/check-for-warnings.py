@@ -8,6 +8,14 @@ RE_WARNING = re.compile("WARN|Could not locate", re.IGNORECASE)
 ALLOWED_WARNINGS = [
     re.compile("Using NumPy C-API based implementation for BLAS"),
     re.compile("g\+\+ not detected"),
+    # Safe to ignore: <https://github.com/conda-forge/aesara-feedstock/pull/68#issuecomment-1147759275>
+    # Hopefully resolved by: <https://github.com/aesara-devs/aesara/pull/980>
+    re.compile("Could not locate executable g77"),
+    re.compile("Could not locate executable f77"),
+    re.compile("Could not locate executable ifort"),
+    re.compile("Could not locate executable ifl"),
+    re.compile("Could not locate executable f90"),
+    re.compile("Could not locate executable efl"),
 ]
 
 result = subprocess.check_output(
