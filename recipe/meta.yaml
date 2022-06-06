@@ -49,6 +49,9 @@ test:
     - aesara
   commands:
     - aesara-cache help
+    - python check-for-warnings.py
+  files:
+    - check-for-warnings.py
 
 about:
   home: https://github.com/aesara-devs/aesara
