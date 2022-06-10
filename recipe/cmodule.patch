@@ -14,7 +14,7 @@ index ecae473f9..c7bac6774 100644
  import textwrap
  import time
  import warnings
-+from contextlib import contextmanager, redirect_stderr
++from contextlib import contextmanager, redirect_stdout
  from io import BytesIO, StringIO
  from typing import Callable, Dict, List, Optional, Set, Tuple, cast
  
@@ -29,17 +29,17 @@ index ecae473f9..c7bac6774 100644
 +        def filter_numpy_missing_executable_warnings():
 +            with warnings.catch_warnings(record=True):
 +                sio = io.StringIO()
-+                with redirect_stderr(sio):
++                with redirect_stdout(sio):
 +                    # Body of "with" block executes here:
 +                    yield
-+                stderr_lines = sio.getvalue().splitlines()
++                stdout_lines = sio.getvalue().splitlines()
 +                executables = ["g77", "f77", "ifort", "ifl", "f90", "DF", "efl"]
-+                for line in stderr_lines:
++                for line in stdout_lines:
 +                    if all(
 +                        f"Could not locate executable {exe}" not in line
 +                        for exe in executables
 +                    ):
-+                        print(line, file=sys.stderr)
++                        print(line, file=sys.stdout)
 +
 +        numpy.distutils.system_info.system_info.verbosity = 0  # side-effect
 +        with filter_numpy_missing_executable_warnings():
