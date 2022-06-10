@@ -1,0 +1,48 @@
+diff --git a/aesara/link/c/cmodule.py b/aesara/link/c/cmodule.py
+index ecae473f9..c7bac6774 100644
+--- a/aesara/link/c/cmodule.py
++++ b/aesara/link/c/cmodule.py
+@@ -5,6 +5,7 @@ Generate and compile C modules for Python.
+ import atexit
+ import distutils.sysconfig
+ import importlib
++import io
+ import logging
+ import os
+ import pickle
+@@ -19,6 +20,7 @@ import tempfile
+ import textwrap
+ import time
+ import warnings
++from contextlib import contextmanager, redirect_stderr
+ from io import BytesIO, StringIO
+ from typing import Callable, Dict, List, Optional, Set, Tuple, cast
+ 
+@@ -2717,9 +2719,24 @@ def default_blas_ldflags():
+ 
+         # We need to catch warnings as in some cases NumPy print
+         # stuff that we don't want the user to see.
+-        # I'm not able to remove all printed stuff
+-        with warnings.catch_warnings(record=True):
+-            numpy.distutils.system_info.system_info.verbosity = 0
++        @contextmanager
++        def filter_numpy_missing_executable_warnings():
++            with warnings.catch_warnings(record=True):
++                sio = io.StringIO()
++                with redirect_stderr(sio):
++                    # Body of "with" block executes here:
++                    yield
++                stderr_lines = sio.getvalue().splitlines()
++                executables = ["g77", "f77", "ifort", "ifl", "f90", "DF", "efl"]
++                for line in stderr_lines:
++                    if all(
++                        f"Could not locate executable {exe}" not in line
++                        for exe in executables
++                    ):
++                        print(line, file=sys.stderr)
++
++        numpy.distutils.system_info.system_info.verbosity = 0  # side-effect
++        with filter_numpy_missing_executable_warnings():
+             blas_info = numpy.distutils.system_info.get_info("blas_opt")
+ 
+         # If we are in a EPD installation, mkl is available

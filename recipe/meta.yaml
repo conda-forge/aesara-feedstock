@@ -8,6 +8,7 @@ source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
   sha256: b5f55bc312c94222a0b1fee4a4fec85a22accb1ce47bb7772d035bcdb3f3f6eb
   patches:
+    - cmodule.patch
 
 build:
   number: 0
