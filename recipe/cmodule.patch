@@ -1,5 +1,5 @@
 diff --git a/aesara/link/c/cmodule.py b/aesara/link/c/cmodule.py
-index ecae473f9..c7bac6774 100644
+index ecae473f9..f804525bb 100644
 --- a/aesara/link/c/cmodule.py
 +++ b/aesara/link/c/cmodule.py
 @@ -5,6 +5,7 @@ Generate and compile C modules for Python.
@@ -14,34 +14,43 @@ index ecae473f9..c7bac6774 100644
  import textwrap
  import time
  import warnings
-+from contextlib import contextmanager, redirect_stdout
++from contextlib import contextmanager, redirect_stderr, redirect_stdout
  from io import BytesIO, StringIO
  from typing import Callable, Dict, List, Optional, Set, Tuple, cast
  
-@@ -2717,9 +2719,24 @@ def default_blas_ldflags():
+@@ -2715,11 +2717,32 @@ def default_blas_ldflags():
+         # isort: off
+         import numpy.distutils.system_info  # noqa
  
-         # We need to catch warnings as in some cases NumPy print
+-        # We need to catch warnings as in some cases NumPy print
++        # We need to catch warnings as in some cases NumPy prints
          # stuff that we don't want the user to see.
 -        # I'm not able to remove all printed stuff
 -        with warnings.catch_warnings(record=True):
 -            numpy.distutils.system_info.system_info.verbosity = 0
++        numpy.distutils.system_info.system_info.verbosity = 0  # side-effect
++
 +        @contextmanager
 +        def filter_numpy_missing_executable_warnings():
++            executables = ["g77", "f77", "ifort", "ifl", "f90", "DF", "efl"]
 +            with warnings.catch_warnings(record=True):
-+                sio = io.StringIO()
-+                with redirect_stdout(sio):
++                stdout_sio, stderr_sio = io.StringIO(), io.StringIO()
++                with redirect_stdout(stdout_sio), redirect_stderr(stderr_sio):
 +                    # Body of "with" block executes here:
 +                    yield
-+                stdout_lines = sio.getvalue().splitlines()
-+                executables = ["g77", "f77", "ifort", "ifl", "f90", "DF", "efl"]
-+                for line in stdout_lines:
-+                    if all(
-+                        f"Could not locate executable {exe}" not in line
-+                        for exe in executables
-+                    ):
-+                        print(line, file=sys.stdout)
++                # In case there are messages printed to both stdout and stderr,
++                # they may be incorrectly interspersed. But in the normal case
++                # there should be no output to either, so this should not pose
++                # a problem.
++                for sio, file in ((stdout_sio, sys.stdout), (stderr_sio, sys.stderr)):
++                    lines = sio.getvalue().splitlines()
++                    for line in lines:
++                        if all(
++                            f"Could not locate executable {exe}" not in line
++                            for exe in executables
++                        ):
++                            print(line, file=file)
 +
-+        numpy.distutils.system_info.system_info.verbosity = 0  # side-effect
 +        with filter_numpy_missing_executable_warnings():
              blas_info = numpy.distutils.system_info.get_info("blas_opt")
  
