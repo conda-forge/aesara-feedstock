@@ -55,7 +55,7 @@ test:
   files:
     - check-for-warnings.py
     - test_printing.py
-  requirements:
+  requires:
     - pytest
 
 about:
