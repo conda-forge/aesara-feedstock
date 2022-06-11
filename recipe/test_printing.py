@@ -23,7 +23,6 @@ from aesara.printing import (
     pydotprint,
 )
 from aesara.tensor.type import dmatrix, dvector, matrix
-from tests.graph.utils import MyInnerGraphOp, MyOp, MyVariable
 
 
 def mocked_blas_opt(*args, **kwargs):
