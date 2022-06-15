@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - aesara-cache = bin.aesara_cache:main
   script: {{ PYTHON }} -m pip install . -vv
@@ -34,7 +34,7 @@ requirements:
     - setuptools
     - six >=1.9.0
     - numpy >=1.9.1
-    - scipy >=0.14,<1.8.0
+    - scipy >=0.14
     - filelock
     - libpython >=2.0  # [win]
     - dataclasses  # [py==36]
