@@ -1,4 +1,4 @@
-{% set version = "2.7.1" %}
+{% set version = "2.7.3" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,11 +6,24 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: b5f55bc312c94222a0b1fee4a4fec85a22accb1ce47bb7772d035bcdb3f3f6eb
+  sha256: 6626aec09b2b10ee8fd113d4dc42e4606c82a1d96031ae5730165b5b35b890ca
   patches:
 
 build:
   number: 0
+
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+  host:
+  run:
+
+test:
+  imports:
+    - aesara
+  commands:
+    - aesara-cache help
 
 outputs:
   - name: aesara-base
@@ -31,7 +44,7 @@ outputs:
         - setuptools
         - six >=1.9.0
         - numpy >=1.9.1
-        - scipy >=0.14,<1.8.0
+        - scipy >=0.14
         - filelock
         - libpython >=2.0  # [win]
         - dataclasses  # [py==36]
