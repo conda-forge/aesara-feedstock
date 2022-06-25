@@ -1,7 +1,7 @@
 {% set version = "2.7.1" %}
 
 package:
-  name: aesara
+  name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
   version: {{ version }}
 
 source:
@@ -11,45 +11,54 @@ source:
 
 build:
   number: 0
-  entry_points:
-    - aesara-cache = bin.aesara_cache:main
-  script: {{ PYTHON }} -m pip install . -vv
 
-requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-  host:
-    - pip
-    - python
-    - blas
-    - libblas
-    - liblapack
-  run:
-    - {{ compiler('c') }}  # [unix]
-    - {{ compiler('cxx') }}  # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-    - python
-    - setuptools
-    - six >=1.9.0
-    - numpy >=1.9.1
-    - scipy >=0.14,<1.8.0
-    - filelock
-    - libpython >=2.0  # [win]
-    - dataclasses  # [py==36]
-    - logical-unification
-    - miniKanren
-    - cons
-    - etuples
-    - typing_extensions
-
-test:
-  imports:
-    - aesara
-  commands:
-    - aesara-cache help
-
+outputs:
+  - name: aesara-base
+    build:
+      script:
+        - python -m pip install . --no-deps -vv
+      entry_points:
+        - aesara-cache = bin.aesara_cache:main
+    requirements:
+      build:
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+      host:
+        - pip
+        - python
+      run:
+        - python
+        - setuptools
+        - six >=1.9.0
+        - numpy >=1.9.1
+        - scipy >=0.14,<1.8.0
+        - filelock
+        - libpython >=2.0  # [win]
+        - dataclasses  # [py==36]
+        - logical-unification
+        - miniKanren
+        - cons
+        - etuples
+        - typing_extensions
+    test:
+      imports:
+        - aesara
+      commands:
+        - aesara-cache help
+  - name: aesara
+    requirements:
+      host:
+        - python
+        - blas
+        - libblas
+        - liblapack
+      run:
+        - python
+        - {{ pin_subpackage('aesara-base', exact=True) }}
+        - {{ compiler('c') }}  # [unix]
+        - {{ compiler('cxx') }}  # [unix]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ compiler('m2w64_cxx') }}  # [win]
 about:
   home: https://github.com/aesara-devs/aesara
   license: BSD-3-Clause
