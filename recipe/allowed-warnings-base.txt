@@ -1,1 +1,32 @@
+# A list of regex for allowed warnings to ignore during testing of "aesara-base".
+# (More warnings are acceptable here since libraries will be missing.)
+
 cblas.h: No such file or directory
+Using NumPy C-API based implementation for BLAS functions
+g\+\+ not detected
+
+# Confirmation that these warnings are safe to ignore:
+#     <https://github.com/conda-forge/aesara-feedstock/pull/68#issuecomment-1147759275>
+# Note: hopefully these warnings can be resolved with:
+#     <https://github.com/aesara-devs/aesara/pull/980>
+
+Could not locate executable g77
+Could not locate executable f77
+Could not locate executable ifort
+Could not locate executable ifl
+Could not locate executable f90
+Could not locate executable efl
+
+# These warnings arise on Windows, and don't seem to be confirmed yet as okay:
+g\+\+ not available
+WARN: Could not locate executable gfortran
+Could not locate executable f95
+Could not locate executable g95
+Could not locate executable efort
+Could not locate executable efc
+WARN: Could not locate executable flang
+WARN: don't know how to compile Fortran code on platform 'nt'
+
+# This appears in Windows:
+
+No such file or directory: 'cc'
