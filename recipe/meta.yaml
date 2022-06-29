@@ -72,6 +72,10 @@ outputs:
         - {{ compiler('cxx') }}  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
+        # On Apple M1, use openblas, for everything else, use mkl-service.
+        - openblas  # [arm64]
+        - mkl-service  # [not arm64]
+
 about:
   home: https://github.com/aesara-devs/aesara
   license: BSD-3-Clause
