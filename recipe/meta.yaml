@@ -39,6 +39,9 @@ outputs:
       host:
         - pip
         - python
+        - blas
+        - libblas
+        - liblapack
       run:
         - python
         - setuptools
@@ -62,9 +65,6 @@ outputs:
     requirements:
       host:
         - python
-        - blas
-        - libblas
-        - liblapack
       run:
         - python
         - {{ pin_subpackage('aesara-base', exact=True) }}
