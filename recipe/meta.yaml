@@ -61,6 +61,10 @@ outputs:
         - aesara
       commands:
         - aesara-cache help
+        - python check-for-warnings.py allowed-warnings-base.txt
+      files:
+        - check-for-warnings.py
+        - allowed-warnings-base.txt
   - name: aesara
     requirements:
       host:
@@ -75,6 +79,15 @@ outputs:
         # On Apple M1, use openblas, for everything else, use mkl-service.
         - openblas  # [arm64]
         - mkl-service  # [not arm64]
+    test:
+      imports:
+        - aesara
+      commands:
+        - aesara-cache help
+        - python check-for-warnings.py allowed-warnings-main.txt
+      files:
+        - check-for-warnings.py
+        - allowed-warnings-main.txt
 
 about:
   home: https://github.com/aesara-devs/aesara
