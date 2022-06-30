@@ -73,7 +73,7 @@ outputs:
         - python
         - {{ pin_subpackage('aesara-base', exact=True) }}
         - {{ compiler('c') }}  # [not win]
-        - {{ compiler('cxx') }}  # [not win]
+        - cxx-compiler  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
         # On Apple M1, use openblas, for everything else, use mkl-service.
