@@ -39,9 +39,6 @@ outputs:
       host:
         - pip
         - python
-        - blas
-        - libblas
-        - liblapack
       run:
         - python
         - setuptools
