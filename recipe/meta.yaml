@@ -76,9 +76,9 @@ outputs:
         - cxx-compiler  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
-        # On Apple M1, use openblas, for everything else, use mkl-service.
-        - openblas  # [arm64]
-        - mkl-service  # [not arm64]
+        # Use openblas on Apple M1 or pypy3.7. For everything else, use mkl-service.
+        - openblas  # [arm64 or (python_impl == 'pypy' and py==37)]
+        - mkl-service  # [not (arm64 or (python_impl == 'pypy' and py==37))]
     test:
       imports:
         - aesara
