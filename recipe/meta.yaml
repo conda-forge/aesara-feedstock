@@ -55,7 +55,10 @@ outputs:
         - aesara
       commands:
         - aesara-cache help
+        - pip check
         - python check-for-warnings.py allowed-warnings-base.txt
+      requires:
+        - pip
       files:
         - check-for-warnings.py
         - allowed-warnings-base.txt
@@ -84,7 +87,10 @@ outputs:
         - aesara
       commands:
         - aesara-cache help
+        - pip check
         - python check-for-warnings.py allowed-warnings-main.txt
+      requires:
+        - pip
       files:
         - check-for-warnings.py
         - allowed-warnings-main.txt
