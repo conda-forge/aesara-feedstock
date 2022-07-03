@@ -41,19 +41,14 @@ outputs:
         - python
       run:
         - python
-        - setuptools
-        - six >=1.9.0
-        - numpy >=1.9.1
-        - scipy >=0.14
+        # Ref: <https://github.com/aesara-devs/aesara/blob/rel-{{ version }}/setup.py>
+        - numpy>=1.17.0
+        - scipy>=0.14
         - filelock
-        - libpython >=2.0  # [win]
-        # The following is no longer needed since the conda-forge CD only builds
-        # for Python 3.7 and higher.
-        # - dataclasses  # [py==36]
+        - etuples
         - logical-unification
         - miniKanren
         - cons
-        - etuples
         - typing_extensions
     test:
       imports:
