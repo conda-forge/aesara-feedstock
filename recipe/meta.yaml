@@ -12,19 +12,6 @@ source:
 build:
   number: 1
 
-requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-  host:
-  run:
-
-test:
-  imports:
-    - aesara
-  commands:
-    - aesara-cache help
-
 outputs:
   - name: aesara-base
     build:
