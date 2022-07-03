@@ -1,5 +1,5 @@
-About aesara
-============
+About aesara-suite
+==================
 
 Home: https://github.com/aesara-devs/aesara
 
@@ -170,27 +170,28 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-aesara-green.svg)](https://anaconda.org/conda-forge/aesara) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/aesara.svg)](https://anaconda.org/conda-forge/aesara) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/aesara.svg)](https://anaconda.org/conda-forge/aesara) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/aesara.svg)](https://anaconda.org/conda-forge/aesara) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-aesara--base-green.svg)](https://anaconda.org/conda-forge/aesara-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/aesara-base.svg)](https://anaconda.org/conda-forge/aesara-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/aesara-base.svg)](https://anaconda.org/conda-forge/aesara-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/aesara-base.svg)](https://anaconda.org/conda-forge/aesara-base) |
 
-Installing aesara
-=================
+Installing aesara-suite
+=======================
 
-Installing `aesara` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `aesara-suite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `aesara` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `aesara, aesara-base` can be installed with `conda`:
 
 ```
-conda install aesara
+conda install aesara aesara-base
 ```
 
 or with `mamba`:
 
 ```
-mamba install aesara
+mamba install aesara aesara-base
 ```
 
 It is possible to list all of the versions of `aesara` available on your platform with `conda`:
@@ -260,17 +261,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating aesara-feedstock
-=========================
+Updating aesara-suite-feedstock
+===============================
 
-If you would like to improve the aesara recipe or build a new
+If you would like to improve the aesara-suite recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/aesara-feedstock are
+Note that all branches in the conda-forge/aesara-suite-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
