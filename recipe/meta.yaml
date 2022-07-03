@@ -76,6 +76,10 @@ outputs:
         # Use openblas on Apple M1 or pypy3.7. For everything else, use mkl-service.
         - openblas  # [arm64 or (python_impl == 'pypy' and py==37)]
         - mkl-service  # [not (arm64 or (python_impl == 'pypy' and py==37))]
+        # For some reason we also need the "blas" package. Otherwise we get reports
+        # of "cblas.h: No such file or directory" at import time.
+        # Ref: <https://github.com/conda-forge/aesara-feedstock/issues/80>
+        - blas
     test:
       imports:
         - aesara
