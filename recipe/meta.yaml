@@ -1,4 +1,4 @@
-{% set version = "2.7.3" %}
+{% set version = "2.7.4" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: 6626aec09b2b10ee8fd113d4dc42e4606c82a1d96031ae5730165b5b35b890ca
+  sha256: 852374405f5eaf7c52703034093a7bbbf9bc05bf3acd6b1e3e6d6b0cf5aa3680
   patches:
 
 build:
