@@ -47,7 +47,9 @@ outputs:
         - scipy >=0.14
         - filelock
         - libpython >=2.0  # [win]
-        - dataclasses  # [py==36]
+        # The following is no longer needed since the conda-forge CD only builds
+        # for Python 3.7 and higher.
+        # - dataclasses  # [py==36]
         - logical-unification
         - miniKanren
         - cons
