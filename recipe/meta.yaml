@@ -28,6 +28,11 @@ outputs:
         - python
       run:
         - python
+        # While libpython is an implicit dependency and will thus be installed
+        # regardless of whether or not it's included here, it's also a direct
+        # dependency of aesara, so we mention it explicitly.
+        - libpython >=2.0  # [win]
+
         # Ref: <https://github.com/aesara-devs/aesara/blob/rel-{{ version }}/setup.py>
         - numpy>=1.17.0
         - scipy>=0.14
