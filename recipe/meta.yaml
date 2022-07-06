@@ -28,10 +28,6 @@ outputs:
         - python
       run:
         - python
-        # While libpython is an implicit dependency and will thus be installed
-        # regardless of whether or not it's included here, it's also a direct
-        # dependency of aesara, so we mention it explicitly.
-        - libpython >=2.0  # [win]
 
         # Ref: <https://github.com/aesara-devs/aesara/blob/rel-{{ version }}/setup.py>
         - numpy>=1.17.0
@@ -65,7 +61,12 @@ outputs:
         - cxx-compiler  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
-        - m2w64-toolchain  # [win]
+
+        # - libpython >=2.0  # [win]
+        # # While m2w64-toolchain is a direct dependency of libpython, we mention
+        # # it here just to be sure.
+        # - m2w64-toolchain  # [win]
+
         # Use openblas on Apple M1 or pypy3.7. For everything else, use mkl-service.
         - openblas  # [arm64 or (python_impl == 'pypy' and py==37)]
         - mkl-service  # [not (arm64 or (python_impl == 'pypy' and py==37))]
