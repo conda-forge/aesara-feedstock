@@ -62,10 +62,11 @@ outputs:
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
 
-        # - libpython >=2.0  # [win]
-        # # While m2w64-toolchain is a direct dependency of libpython, we mention
-        # # it here just to be sure.
-        # - m2w64-toolchain  # [win]
+        - m2w64-toolchain  # [win]
+        # The libpython conda-forge package seems to be a wrapper package
+        # which configures m2w64-toolchain for Python.
+        # <https://github.com/conda-forge/libpython-feedstock/blob/main/recipe/bld.bat>
+        - libpython >=2.2  # [win]
 
         # Use openblas on Apple M1 or pypy3.7. For everything else, use mkl-service.
         - openblas  # [arm64 or (python_impl == 'pypy' and py==37)]
