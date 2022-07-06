@@ -78,6 +78,7 @@ outputs:
     test:
       imports:
         - aesara
+        - aesara.configdefaults
       commands:
         - aesara-cache help
         - pip check
