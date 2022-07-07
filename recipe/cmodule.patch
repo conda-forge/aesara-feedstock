@@ -18,7 +18,7 @@ index ecae473f9..139fed63e 100644
  from io import BytesIO, StringIO
  from typing import Callable, Dict, List, Optional, Set, Tuple, cast
  
-@@ -2715,11 +2717,43 @@ def default_blas_ldflags():
+@@ -2715,11 +2717,45 @@ def default_blas_ldflags():
          # isort: off
          import numpy.distutils.system_info  # noqa
  
@@ -63,6 +63,8 @@ index ecae473f9..139fed63e 100644
 +                            print(line, file=file)
 +
 +        with filter_numpy_missing_executable_warnings():
++            blas_info = numpy.distutils.system_info.get_info("blas_opt")
++        for _ in range(10):
              blas_info = numpy.distutils.system_info.get_info("blas_opt")
  
          # If we are in a EPD installation, mkl is available
