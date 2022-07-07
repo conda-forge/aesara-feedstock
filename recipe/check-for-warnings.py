@@ -3,15 +3,20 @@ import subprocess
 import sys
 from pathlib import Path
 
-RE_WARNING = re.compile("WARN|Could not locate", re.IGNORECASE)
+RE_WARNING = re.compile("WARN|Could not locate|error|Errno", re.IGNORECASE)
 
+if len(sys.argv) != 2:
+    print("Expecting a single command line argument with the list of allowed warnings.")
+    sys.exit(1)
+
+allowed_warnings_file_contents = Path(sys.argv[1]).read_text()
 ALLOWED_WARNINGS = [
-    re.compile("Using NumPy C-API based implementation for BLAS"),
-    re.compile("g\+\+ not detected"),
+    re.compile(line) for line in allowed_warnings_file_contents.splitlines()
+    if line.strip() and not line.strip().startswith("#")
 ]
 
 result = subprocess.check_output(
-    ["python", "-c", "import aesara"],
+    ["python", "-c", "import aesara.configdefaults"],
     stderr=subprocess.STDOUT
 )
 
@@ -27,8 +32,7 @@ if len(not_allowed_warning_lines) > 0:
     print("The following warnings were emitted but not allowed:")
     print("\n    ".join([""] + not_allowed_warning_lines + [""]))
     print(
-        "Please either fix them or add them to the ALLOWED_WARNINGS "
-        "list in check-for-warnings.py."
+        "Please either fix them or add them to the allowed warnings file."
     )
     exit(1)
 else:
