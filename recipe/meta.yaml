@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/username/reponame/archive/{{ version }}.tar.gz
+  url: https://github.com/aesara-devs/aesara/archive/{{ version }}.tar.gz
   sha256: 571851617663002cea2d0faed6d1fdcc44a99a2870e521885b3ee57152d0b233
   patches:
 
