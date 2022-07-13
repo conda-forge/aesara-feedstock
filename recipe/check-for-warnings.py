@@ -16,7 +16,7 @@ ALLOWED_WARNINGS = [
 ]
 
 result = subprocess.check_output(
-    ["python", "-c", "import aesara.configdefaults"],
+    ["python", "-c", "import aesara.configdefaults; import aesara.tensor"],
     stderr=subprocess.STDOUT
 )
 
