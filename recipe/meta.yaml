@@ -19,6 +19,9 @@ outputs:
         - python -m pip install . --no-deps -vv
       entry_points:
         - aesara-cache = bin.aesara_cache:main
+      # This skip should be duplicated below in the aesara-base section.
+      # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
+      skip: True  # [python_impl == 'pypy' and py<38]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -51,6 +54,12 @@ outputs:
         - check-for-warnings.py
         - allowed-warnings-base.txt
   - name: aesara
+    build:
+      # This skip should be duplicated above in the aesara-base section.
+      # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
+      skip: True  # [python_impl == 'pypy' and py<38]
+      script:
+        - echo "Nothing to build here, just add dependencies."
     requirements:
       host:
         - python
