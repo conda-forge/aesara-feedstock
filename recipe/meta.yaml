@@ -1,4 +1,4 @@
-{% set version = "2.7.8" %}
+{% set version = "2.7.9" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: e20cc7e6400b4c122d495ae95796dc88a9b69af0ec98ae8cdedb31efda2c07cc
+  sha256: c17348ac555b53fef8c2b6a2df5502bbb01228ae7e3e359338ef38ab53e46004
   patches:
 
 build:
@@ -21,7 +21,7 @@ outputs:
         - aesara-cache = bin.aesara_cache:main
       # This skip should be duplicated below in the aesara-base section.
       # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
-      skip: True  # [python_impl == 'pypy' and py<38]
+      skip: true  # [python_impl == 'pypy' and py<38]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -58,7 +58,7 @@ outputs:
     build:
       # This skip should be duplicated above in the aesara-base section.
       # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
-      skip: True  # [python_impl == 'pypy' and py<38]
+      skip: true  # [python_impl == 'pypy' and py<38]
       script:
         - echo "Nothing to build here, just add dependencies."
     requirements:
