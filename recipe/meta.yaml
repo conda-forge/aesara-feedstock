@@ -19,9 +19,6 @@ outputs:
         - python -m pip install . --no-deps -vv
       entry_points:
         - aesara-cache = bin.aesara_cache:main
-      # This skip should be duplicated below in the aesara-base section.
-      # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
-      skip: true  # [python_impl == 'pypy' and py<38]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -56,9 +53,6 @@ outputs:
         - allowed-warnings-base.txt
   - name: aesara
     build:
-      # This skip should be duplicated above in the aesara-base section.
-      # Ref: <https://github.com/conda-forge/conda-smithy/issues/1641>
-      skip: true  # [python_impl == 'pypy' and py<38]
       script:
         - echo "Nothing to build here, just add dependencies."
     requirements:
@@ -78,15 +72,13 @@ outputs:
         # <https://github.com/conda-forge/libpython-feedstock/blob/main/recipe/bld.bat>
         - libpython >=2.2  # [win]
 
-        # Use openblas on Apple M1 or pypy3.7. For everything else, use mkl-service.
-        - openblas  # [arm64 or (python_impl == 'pypy' and py==37)]
-        - mkl-service  # [not (arm64 or (python_impl == 'pypy' and py==37))]
+        # Use openblas on Apple M1. For everything else, use mkl-service.
+        - openblas  # [arm64]
+        - mkl-service  # [not arm64]
         # For some reason we also need the "blas" package. Otherwise we get reports
         # of "cblas.h: No such file or directory" at import time.
         # Ref: <https://github.com/conda-forge/aesara-feedstock/issues/80>
-        - blas  # [not (win and python_impl == 'pypy' and py==37)]
-        # Note: we should probably drop pypy3.7 support since it seems a bit screwy,
-        # and 3.8/3.9 are already out.
+        - blas
     test:
       imports:
         - aesara
