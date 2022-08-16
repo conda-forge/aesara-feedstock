@@ -1,4 +1,4 @@
-{% set version = "2.7.9" %}
+{% set version = "2.7.10" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: c17348ac555b53fef8c2b6a2df5502bbb01228ae7e3e359338ef38ab53e46004
+  sha256: 4ce6670be8aab0a6ee95386622545362919b0f64cde00e7dfdc1472eeeae6b7f
   patches:
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: aesara-base
@@ -38,7 +38,7 @@ outputs:
         - miniKanren
         - cons
         - typing_extensions
-        - setuptools >=45.0.0
+        - setuptools >=48.0.0
     test:
       imports:
         - aesara
