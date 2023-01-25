@@ -18,7 +18,7 @@ outputs:
       script:
         - python -m pip install . --no-deps -vv
       entry_points:
-        - aesara-cache = bin.aesara_cache:main
+        - aesara-cache = aesara.bin.aesara_cache:main
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
