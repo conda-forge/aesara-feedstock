@@ -27,7 +27,7 @@ outputs:
         - numpy >=1.17.0                         # [build_platform != target_platform]
         - setuptools-scm                         # [build_platform != target_platform]
         - tomli                                  # [build_platform != target_platform]
-        - setuptools >=48.0.0                    # [build_platform != target_platform]
+        - setuptools >=61.2                      # [build_platform != target_platform]
       host:
         - pip
         - python
@@ -48,7 +48,7 @@ outputs:
         - miniKanren
         - cons
         - typing_extensions
-        - setuptools >=61.2
+        - setuptools >=48.0.0
     test:
       imports:
         - aesara
