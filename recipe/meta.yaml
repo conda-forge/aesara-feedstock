@@ -10,13 +10,14 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: aesara-base
     build:
       script:
-        - python -m pip install . --no-deps -vv
+        - python -m pip install . --no-deps -vv --prefix ${PREFIX}  # [aarch64]
+        - python -m pip install . --no-deps -vv  # [not aarch64]
       entry_points:
         - aesara-cache = aesara.bin.aesara_cache:main
     requirements:
@@ -83,8 +84,8 @@ outputs:
         - libpython >=2.2  # [win]
 
         # Use openblas on Apple M1. For everything else, use mkl-service.
-        - openblas  # [arm64]
-        - mkl-service  # [not arm64]
+        - openblas  # [arm64 or aarch64]
+        - mkl-service  # [not arm64 and not aarch64]
         # For some reason we also need the "blas" package. Otherwise we get reports
         # of "cblas.h: No such file or directory" at import time.
         # Ref: <https://github.com/conda-forge/aesara-feedstock/issues/80>
