@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: aesara-base
