@@ -1,4 +1,4 @@
-{% set version = "2.9.0" %}
+{% set version = "2.9.1" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: c20c03a178f9e4469ee653125c04c414fed0aef2e4062fa44c5393a0236a8ba1
+  sha256: 8afefce30eb733975085e5903ef47dbbca5642e6cf0ae78fa31fb6f41eebd3a4
   patches:
 
 build:
@@ -65,7 +65,8 @@ outputs:
         - python
         - {{ pin_subpackage('aesara-base', exact=True) }}
         - {{ compiler('c') }}  # [not win]
-        - cxx-compiler  # [not win]
+        - {{ compiler('cxx') }}  # [not win and not linux]
+        - gxx  # [linux]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
 
