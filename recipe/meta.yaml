@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: aesara-base
@@ -33,7 +33,7 @@ outputs:
         - python
 
         # Ref: <https://github.com/aesara-devs/aesara/blob/rel-{{ version }}/setup.py>
-        - numpy>=1.17.0
+        - numpy>=1.17.0,<1.26
         - scipy>=0.14
         - filelock
         - etuples
