@@ -27,3 +27,18 @@ No such file or directory: 'gcc'
 # I'm not going to bother with that now because this test has not proven useful after the
 # initial period when the aesara-base / aesara distinction was implemented and debugged.
 /site-packages/numpy/distutils/system_info\.py:(\d+): UserWarning:(\s*)$
+\\site-packages\\numpy\\distutils\\system_info.py:(\d+): UserWarning:(\s*)$
+
+# These are now appearing on Windows:
+Could not locate executable g77
+Could not locate executable f77
+Could not locate executable ifort
+Could not locate executable ifl
+Could not locate executable f90
+Could not locate executable efl
+Could not locate executable gfortran
+Could not locate executable f95
+Could not locate executable g95
+Could not locate executable efort
+Could not locate executable efc
+Could not locate executable flang
