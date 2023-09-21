@@ -1,4 +1,4 @@
-{% set version = "2.9.1" %}
+{% set version = "2.9.2" %}
 
 package:
   name: aesara-suite  # https://github.com/conda/conda-build/issues/3933
@@ -6,11 +6,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/aesara/aesara-{{ version }}.tar.gz
-  sha256: 8afefce30eb733975085e5903ef47dbbca5642e6cf0ae78fa31fb6f41eebd3a4
+  sha256: 585b7f1281d571b776cabf0c224004f30343180881a71230733850a85cd04803
   patches:
 
 build:
   number: 0
+  # <https://github.com/conda-forge/scipy-feedstock/issues/249>
+  skip: true  # [win and (python_impl == 'pypy')]
 
 outputs:
   - name: aesara-base
@@ -33,7 +35,7 @@ outputs:
         - python
 
         # Ref: <https://github.com/aesara-devs/aesara/blob/rel-{{ version }}/setup.py>
-        - numpy>=1.17.0
+        - numpy>=1.17.0,<1.26
         - scipy>=0.14
         - filelock
         - etuples
