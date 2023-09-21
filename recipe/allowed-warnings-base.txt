@@ -14,3 +14,16 @@ don't know how to compile Fortran code on platform 'nt'
 
 No such file or directory: 'cc'
 No such file or directory: 'gcc'
+
+# The following is the first part of a multiline warning which appears since v2.9.2:
+#   /opt/conda/lib/python3.11/site-packages/numpy/distutils/system_info.py:2159: UserWarning: 
+#       Optimized (vendor) Blas libraries are not found.
+#       Falls back to netlib Blas library which has worse performance.
+#       A better performance should be easily gained by switching
+#       Blas library.
+#
+# The below regex could potentially match other distinct multiline errors with an equivalent
+# leading line, but doing this more robustly would involve refactoring `check-for-warnings.py`.
+# I'm not going to bother with that now because this test has not proven useful after the
+# initial period when the aesara-base / aesara distinction was implemented and debugged.
+/site-packages/numpy/distutils/system_info\.py:(\d+): UserWarning:(\s*)$
