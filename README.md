@@ -164,10 +164,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_python3.10.____cpythonpython_implpypy</td>
+              <td>win_64_python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11868&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/aesara-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.10.____cpythonpython_implpypy" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/aesara-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -185,10 +185,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_python3.9.____cpythonpython_implcpython</td>
+              <td>win_64_python3.9.____cpythonpython_implpypy</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=11868&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/aesara-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.9.____cpythonpython_implcpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/aesara-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.9.____cpythonpython_implpypy" alt="variant">
                 </a>
               </td>
             </tr>

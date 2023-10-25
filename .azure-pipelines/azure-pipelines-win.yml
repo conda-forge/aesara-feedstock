@@ -8,10 +8,10 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_python3.10.____cpythonpython_implpypy:
-        CONFIG: win_64_python3.10.____cpythonpython_implpypy
+      win_64_python3.10.____cpythonpython_implcpython:
+        CONFIG: win_64_python3.10.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_python3.10.____cpythonpython_implpypy
+        SHORT_CONFIG: win_64_python3.10.____cpythonpython_implcpython
       win_64_python3.11.____cpythonpython_implcpython:
         CONFIG: win_64_python3.11.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
@@ -20,10 +20,10 @@ jobs:
         CONFIG: win_64_python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_python3.8.____cpythonpython_implcpython
-      win_64_python3.9.____cpythonpython_implcpython:
-        CONFIG: win_64_python3.9.____cpythonpython_implcpython
+      win_64_python3.9.____cpythonpython_implpypy:
+        CONFIG: win_64_python3.9.____cpythonpython_implpypy
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_python3.9.____cpythonpython_implcpython
+        SHORT_CONFIG: win_64_python3.9.____cpythonpython_implpypy
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
