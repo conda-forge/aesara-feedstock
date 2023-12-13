@@ -77,14 +77,7 @@ outputs:
         # which configures m2w64-toolchain for Python.
         # <https://github.com/conda-forge/libpython-feedstock/blob/main/recipe/bld.bat>
         - libpython >=2.2  # [win]
-
-        # Use openblas on Apple M1. For everything else, use mkl-service.
-        - openblas  # [arm64 or aarch64]
-        - mkl-service  # [not arm64 and not aarch64]
-        # For some reason we also need the "blas" package. Otherwise we get reports
-        # of "cblas.h: No such file or directory" at import time.
-        # Ref: <https://github.com/conda-forge/aesara-feedstock/issues/80>
-        - blas
+        - libblas
     test:
       imports:
         - aesara
