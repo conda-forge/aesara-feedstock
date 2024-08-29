@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   # <https://github.com/conda-forge/scipy-feedstock/issues/249>
-  skip: true  # [win and (python_impl == 'pypy')]
+  skip: true  # [(win and (python_impl == 'pypy')) or py>311]
 
 outputs:
   - name: aesara-base
