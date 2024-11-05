@@ -10,7 +10,7 @@ source:
   patches:
 
 build:
-  number: 0
+  number: 1
   # <https://github.com/conda-forge/scipy-feedstock/issues/249>
   skip: true  # [(win and (python_impl == 'pypy')) or py>311]
 
